@@ -1,0 +1,4 @@
+<sebm-google-map [latitude]="startLocal.latitude" [longitude]="startLocal.longitude" *ngIf="startLocal">
+  <sebm-google-map-marker [latitude]="startLocal.latitude" [longitude]="startLocal.longitude" [title]="startTitle" *ngIf="startLocal"></sebm-google-map-marker>
+  <sebm-google-map-marker [latitude]="endLocal.longitude" [longitude]="endLocal.longitude" [title]="endTitle" *ngIf="endLocal"></sebm-google-map-marker>
+</sebm-google-map>

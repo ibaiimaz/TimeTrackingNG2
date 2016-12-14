@@ -1,0 +1,5 @@
+<div class="notifications">
+  <div (click)="hide(note)" class="{{ note.type }}" *ngFor="let note of notifications">
+    {{ note.message }}
+  </div>
+</div>

@@ -1,0 +1,40 @@
+
+<div >
+    <div>
+        <span class="time-numbers" style="display: inline-block;" *ngIf="!canStartTracking()">{{lastRecord.start | amDateFormat:'HH:mm:ss'}}</span>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="activity" [disabled]="!canStartTracking()" />
+      <div class="input-group-btn">
+        <button appClickLoading [buttonText]="'Starting...'" class="btn btn-default" type="button" (click)="startActivity()" *ngIf="canStartTracking()">Start</button>
+        <button appClickLoading [buttonText]="'Ending...'" type="button" class="btn" (click)="endActivity()" *ngIf="!canStartTracking()">End</button>
+      </div>
+    </div>
+</div>
+
+<table class='table table-condensed table-hover'>
+  <thead>
+    <tr>
+      <th>Duration</th>
+      <th>Activity</th>
+      <th>Map</th>
+      <th>Detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let timeRecord of timeRecords">
+      <td>{{timeRecord.durationToShow}}</td>
+      <td>{{timeRecord.activity}}</td>
+      <td><a (click)="showModal(timeRecord)"><i class="glyphicon glyphicon-info-sign home-icon"></i></a></td>
+      <td><a [routerLink]="['/activity', timeRecord.id]"><i class="glyphicon glyphicon-info-sign home-icon"></i></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<app-modal whide="true"
+    modal-id="{{MODAL_ID}}"> 
+    <app-maps 
+      [startLocalization]="modalStartLocalization" 
+      [endLocalization]="modalEndLocalization">
+    </app-maps>
+</app-modal>

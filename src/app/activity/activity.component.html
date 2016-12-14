@@ -1,0 +1,49 @@
+<div *ngIf="loading">
+  Loading details...
+</div>
+<div *ngIf="!loading">
+  <div class="col-xs-4">
+    <app-maps 
+      [startLocalization]="activity.startLocalization" 
+      [endLocalization]="activity.startLocalization">
+    </app-maps>
+  </div>
+  <div class="col-xs-8">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <b>Start</b>
+          </td>
+          <td>
+            <span>{{activity.start | amDateFormat:'HH:mm:ss'}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>End</b>
+          </td>
+          <td>
+            <span *ngIf="activity.isCompleted">{{activity.end | amDateFormat:'HH:mm:ss'}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Duration</b>
+          </td>
+          <td>
+            <span>{{activity.durationStr}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Activity</b>
+          </td>
+          <td>
+            <span>{{activity.activity}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

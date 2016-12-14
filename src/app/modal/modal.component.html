@@ -1,0 +1,40 @@
+<div class="ng-modal-container"
+    [ngClass]="{ animated: animate, 'ng-modal-open': isOpen }"
+    (click)="close(true)">
+
+    <div class="ng-modal"
+        [ngClass]="{ wide: wide, animated: animate, 'ng-modal-closed': !isOpen }"
+        (click)="filterClick($event)">
+        <div class="title" *ngIf="modalTitle">
+            <h2>
+                {{ modalTitle }}
+                <span class="right" (click)="close()">
+                    <i class="icon icon-cancel"></i>
+                </span>
+            </h2>
+        </div>
+
+        <div class="body">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
+
+<!--<div *ngIf="isOpen">
+  <div class="ng-modal-overlay" (click)="close(true)"></div>
+
+  <div class="ng-modal">
+    <div class="title" *ngIf="modalTitle">
+      <h2>
+        {{ modalTitle }}
+        <span class="right" (click)="close()">
+                    <i class="icon icon-cancel"></i>
+                </span>
+      </h2>
+    </div>
+
+    <div class="body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>-->
